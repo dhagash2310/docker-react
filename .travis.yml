@@ -10,3 +10,14 @@ before_install:
 script:
   - docker run -e CI=true dhagash/docker-react npm run test
 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "App21"
+  env: "App21-env"
+  bucket_name: "elasticbeanstalk-us-east-2-301543735738"
+  bucket_path: "docker"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
